@@ -4,6 +4,7 @@ let storedDisplay = "";
 let result = 0;
 let errorDisplayed = false;
 let justEvaluated = false;
+let justDeleted = false;
 
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
@@ -37,6 +38,25 @@ buttons.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     let targetButton = event.target.textContent;
 
+    if (targetButton === "del") {
+      event.preventDefault();
+
+      if (justEvaluated) return;
+
+      if (display.textContent === NaN) return;
+
+      if (storedDisplay === "") {
+        display.textContent = display.textContent.slice(0, -1);
+        storedDisplay = display.textContent;
+        num1 = null;
+        return;
+      }
+      display.textContent = display.textContent.slice(0, -1);
+      storedDisplay = storedDisplay.slice(0, -1);
+
+      return;
+    }
+
     if (targetButton === ".") {
       if (storedDisplay.includes(".") && !justEvaluated) return;
       if (justEvaluated || storedDisplay === "") {
@@ -67,7 +87,9 @@ buttons.forEach((btn) => {
       } else if (storedDisplay !== "") {
         num2 = parseFloat(storedDisplay);
         num1 = operate(num1, operator, num2);
+        justEvaluated = true;
         display.textContent = Math.round(num1 * 100) / 100;
+        storedDisplay = "";
       }
       operator = targetButton;
       justEvaluated = false;
