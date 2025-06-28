@@ -36,6 +36,16 @@ let operator = "";
 buttons.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     let targetButton = event.target.textContent;
+
+    if (targetButton === ".") {
+      if (storedDisplay.includes(".") && !justEvaluated) return;
+      if (justEvaluated || storedDisplay === "") {
+        storedDisplay = "0";
+        display.textContent = "0";
+        justEvaluated = false;
+      }
+    }
+
     storedDisplay += targetButton;
 
     if (errorDisplayed) {
@@ -52,21 +62,23 @@ buttons.forEach((btn) => {
         return;
       }
       if (num1 === null && num2 === null) {
-        num1 = parseInt(storedDisplay);
+        num1 = parseFloat(storedDisplay);
         storedDisplay = "";
       } else if (storedDisplay !== "") {
-        num2 = parseInt(storedDisplay);
+        num2 = parseFloat(storedDisplay);
         num1 = operate(num1, operator, num2);
         display.textContent = Math.round(num1 * 100) / 100;
       }
       operator = targetButton;
       justEvaluated = false;
     }
+
     if (justEvaluated && !["+", "-", "*", "/"].includes(targetButton)) {
       storedDisplay = targetButton;
       display.textContent = "";
       justEvaluated = false;
     }
+
     display.textContent += targetButton;
 
     if (targetButton === "=") {
@@ -84,7 +96,7 @@ buttons.forEach((btn) => {
         errorDisplayed = true;
         return;
       }
-      num2 = parseInt(storedDisplay);
+      num2 = parseFloat(storedDisplay);
       result = operate(num1, operator, num2);
       if (result === undefined) {
         storedDisplay = "";
@@ -93,7 +105,7 @@ buttons.forEach((btn) => {
         return;
       }
       display.textContent = Math.round(result * 100) / 100;
-      storedDisplay = result;
+      storedDisplay = result.toString();
       num1 = null;
       num2 = null;
       justEvaluated = true;
