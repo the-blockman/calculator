@@ -5,7 +5,7 @@ let result = 0;
 let errorDisplayed = false;
 let justEvaluated = false;
 let justDeleted = false;
-
+let justChained = false;
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let divide = (a, b) => a / b;
@@ -42,6 +42,8 @@ buttons.forEach((btn) => {
       event.preventDefault();
 
       if (justEvaluated) return;
+      if (justChained) return;
+      justChained = false;
 
       if (display.textContent === NaN) return;
 
@@ -66,6 +68,10 @@ buttons.forEach((btn) => {
       }
     }
 
+    if (!["+", "-", "*", "/", "=", "del", "c"].includes(targetButton)) {
+      justChained = false;
+    }
+
     storedDisplay += targetButton;
 
     if (errorDisplayed) {
@@ -75,9 +81,11 @@ buttons.forEach((btn) => {
 
     if (["+", "-", "*", "/"].includes(targetButton)) {
       const lastOperator = display.textContent.slice(-1);
+      justEvaluated = false;
 
       if (["+", "-", "*", "/"].includes(lastOperator)) {
         display.textContent = display.textContent.slice(0, -1) + targetButton;
+        // storedDisplay = storedDisplay.slice(0, -1) + targetButton;
         operator = targetButton;
         return;
       }
@@ -87,12 +95,11 @@ buttons.forEach((btn) => {
       } else if (storedDisplay !== "") {
         num2 = parseFloat(storedDisplay);
         num1 = operate(num1, operator, num2);
-        justEvaluated = true;
         display.textContent = Math.round(num1 * 100) / 100;
         storedDisplay = "";
+        justChained = true;
       }
       operator = targetButton;
-      justEvaluated = false;
     }
 
     if (justEvaluated && !["+", "-", "*", "/"].includes(targetButton)) {
@@ -100,6 +107,11 @@ buttons.forEach((btn) => {
       display.textContent = "";
       justEvaluated = false;
     }
+
+    // if (justEvaluated && operator !== "") {
+    //   storedDisplay = "";
+    //   justEvaluated = false;
+    // }
 
     display.textContent += targetButton;
 
@@ -130,6 +142,7 @@ buttons.forEach((btn) => {
       storedDisplay = result.toString();
       num1 = null;
       num2 = null;
+      operator = "";
       justEvaluated = true;
     }
 
