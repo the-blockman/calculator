@@ -37,8 +37,8 @@ buttons.forEach((btn) => {
         num2 = parseInt(storedDisplay);
         num1 = operate(num1, operator, num2);
         display.textContent = num1;
+        display.textContent += targetButton;
       }
-
       operator = targetButton;
       storedDisplay = "";
     }
@@ -47,8 +47,9 @@ buttons.forEach((btn) => {
       num2 = parseInt(storedDisplay);
       result = operate(num1, operator, num2);
       display.textContent = result;
-      storedDisplay = "";
-      num1 = parseInt(result);
+      storedDisplay = result;
+      num1 = null;
+      num2 = null;
     }
 
     if (targetButton === "c") {
