@@ -36,7 +36,7 @@ buttons.forEach((btn) => {
       } else if (storedDisplay !== "") {
         num2 = parseInt(storedDisplay);
         num1 = operate(num1, operator, num2);
-        display.textContent = Math.round(num1 * 10) / 10;
+        display.textContent = Math.round(num1 * 100) / 100;
         display.textContent += targetButton;
       }
       operator = targetButton;
@@ -46,7 +46,7 @@ buttons.forEach((btn) => {
     if (targetButton === "=") {
       num2 = parseInt(storedDisplay);
       result = operate(num1, operator, num2);
-      display.textContent = Math.round(result * 10) / 10;
+      display.textContent = Math.round(result * 100) / 100;
       storedDisplay = result;
       num1 = null;
       num2 = null;
