@@ -56,6 +56,7 @@ buttons.forEach((btn) => {
 
     if (targetButton === ".") {
       if (storedDisplay.includes(".") && !justEvaluated) return;
+      if (storedDisplay === "" && display.textContent !== "") return;
       if (justEvaluated || storedDisplay === "") {
         storedDisplay = "0";
         display.textContent = "0";
