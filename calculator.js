@@ -76,6 +76,7 @@ buttons.forEach((btn) => {
       justEvaluated = false;
       if (["+", "-", "*", "/"].includes(lastOperator)) {
         display.textContent = display.textContent.slice(0, -1) + targetButton;
+        storedDisplay = "";
         operator = targetButton;
         return;
       }
@@ -143,10 +144,10 @@ buttons.forEach((btn) => {
       return;
     }
 
-    // console.log(`num1 = ${num1}`);
-    // console.log(`num2 = ${num2}`);
-    // console.log(`operator = ${operator}`);
-    // console.log(`stored = ${storedDisplay}`);
-    // console.log(`disp = ${display.textContent}`);
+    console.log(`num1 = ${num1}`);
+    console.log(`num2 = ${num2}`);
+    console.log(`operator = ${operator}`);
+    console.log(`stored = ${storedDisplay}`);
+    console.log(`disp = ${display.textContent}`);
   });
 });
