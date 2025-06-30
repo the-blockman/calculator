@@ -88,6 +88,7 @@ buttons.forEach((btn) => {
         num1 = operate(num1, operator, num2);
         display.textContent = Math.round(num1 * 100) / 100;
         storedDisplay = "";
+        num2 = null;
         justChained = true;
       }
       operator = targetButton;
@@ -102,6 +103,11 @@ buttons.forEach((btn) => {
       storedDisplay = targetButton;
       display.textContent = "";
       justEvaluated = false;
+    }
+
+    ///if a button is clicked after chained result: allow delete
+    if (justChained && !["+", "-", "*", "/"].includes(targetButton)) {
+      justChained = false;
     }
 
     display.textContent += targetButton;
