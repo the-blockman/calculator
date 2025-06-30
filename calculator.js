@@ -67,7 +67,7 @@ function handleDecimalInput(targetButton) {
 //handle delete button
 function handleDelete() {
   if (justEvaluated || justChained) return;
-  if (storedDisplay === "") {
+  if (storedDisplay === "0") {
     display.textContent = display.textContent.slice(0, -1);
     storedDisplay = display.textContent;
     num1 = null;
