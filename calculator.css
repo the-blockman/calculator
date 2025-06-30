@@ -28,6 +28,7 @@ div {
   height: 140px;
   align-items: end;
   padding-right: 5px;
+  margin-bottom: 16px;
 }
 
 button {
@@ -36,11 +37,19 @@ button {
   padding: 10px;
   border-radius: 100px;
   border: none;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+.undo {
+  background-color: #2e2e2e;
+  color: white;
+  font-size: 22px;
 }
 
 .operator {
   background-color: orange;
+  color: white;
+  font-size: 24px;
 }
 
 .stretched {
