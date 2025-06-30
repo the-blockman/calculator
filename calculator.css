@@ -1,8 +1,5 @@
 body {
   text-align: center;
-  color: white;
-  font-size: 56px;
-  font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -26,10 +23,13 @@ div {
 }
 
 .display {
-  height: 200px;
+  height: 180px;
   align-items: end;
   padding-right: 5px;
   margin-bottom: 16px;
+  color: white;
+  font-size: 72px;
+  font-weight: 400;
 }
 
 button {
@@ -38,7 +38,7 @@ button {
   padding: 10px;
   border-radius: 100px;
   border: none;
-  font-size: 20px;
+  font-size: 36px;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -46,13 +46,13 @@ button {
 .undo {
   background-color: #2e2e2e;
   color: white;
-  font-size: 22px;
+  font-size: 32px;
 }
 
 .operator {
   background-color: orange;
   color: white;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 .stretched {
