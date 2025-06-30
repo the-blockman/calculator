@@ -1,19 +1,48 @@
 body {
   text-align: center;
+  color: white;
+  font-size: 36px;
+  font-weight: 500;
+}
+
+p {
+  padding: 0px;
+  margin: 0px;
 }
 
 div {
   display: flex;
   justify-content: end;
+  margin: 8px 0px;
+  gap: 8px;
 }
 
 .container {
   display: inline-block;
   flex-direction: column;
+  background-color: black;
+  padding: 15px;
+}
+
+.display {
+  height: 140px;
   align-items: end;
+  padding-right: 5px;
 }
 
 button {
-  width: 40px;
+  width: 50px;
+  height: 50px;
   padding: 10px;
+  border-radius: 100px;
+  border: none;
+  font-size: 18px;
+}
+
+.operator {
+  background-color: orange;
+}
+
+.stretched {
+  width: 50%;
 }
