@@ -48,18 +48,20 @@ function showError() {
 }
 
 //handle decimals
-function handleDecimalInput() {
+function handleDecimalInput(targetButton) {
   if (storedDisplay.includes(".") && !justEvaluated) return;
   if (storedDisplay === "0" && display.textContent !== "")
     display.textContent += "0";
   if (storedDisplay === "0" && display.textContent === "")
     display.textContent += "0";
   if (justEvaluated) {
-    storedDisplay = "0";
-    display.textContent = "0";
+    storedDisplay = "0.";
+    display.textContent = "0.";
     justEvaluated = false;
     return;
   }
+  storedDisplay += targetButton;
+  display.textContent += targetButton;
 }
 
 //handle delete button
@@ -136,7 +138,8 @@ buttons.forEach((btn) => {
     }
 
     if (targetButton === ".") {
-      handleDecimalInput();
+      handleDecimalInput(targetButton);
+      return;
     }
 
     storedDisplay += targetButton;
@@ -195,5 +198,6 @@ buttons.forEach((btn) => {
     console.log(`operator = ${operator}`);
     console.log(`stored = ${storedDisplay}`);
     console.log(`disp = ${display.textContent}`);
+    console.log(justEvaluated);
   });
 });
