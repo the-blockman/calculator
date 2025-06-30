@@ -7,25 +7,37 @@
     <title>Calculator</title>
   </head>
   <body>
-    <div><p></p></div>
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button>0</button>
-    <button>+</button>
-    <button>-</button>
-    <button>/</button>
-    <button>*</button>
-    <button>=</button>
-    <button>c</button>
-    <button>.</button>
-    <button>del</button>
+    <div class="container">
+      <div class="display"><p></p></div>
+      <div class="top-row">
+        <button class="undo">del</button>
+        <button class="undo">c</button>
+        <button class="operator">/</button>
+      </div>
+      <div>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">*</button>
+      </div>
+      <div>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">-</button>
+      </div>
+      <div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operator">+</button>
+      </div>
+      <div class="bottom-row">
+        <button>0</button>
+        <button>.</button>
+        <button class="operator">=</button>
+      </div>
+    </div>
     <script src="calculator.js"></script>
   </body>
 </html>
